@@ -37,6 +37,14 @@ public class CategoryController {
 		mav.setViewName("jsp/form");
 		return mav;
 	}
+	
+	@RequestMapping("console")
+	public ModelAndView console(){
+		ModelAndView mav = new ModelAndView();
+		
+		mav.setViewName("jsp/console");
+		return mav;
+	}
 
 	@RequestMapping("layui")
 	public ModelAndView layui(){
