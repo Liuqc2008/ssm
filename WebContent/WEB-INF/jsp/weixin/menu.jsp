@@ -22,6 +22,15 @@
     <button type="button" onclick="DeleteMenu()">删除菜单</button>
     
     <script>
+    
+    var form, layedit, laydate, layer;
+    layui.use(['form', 'layedit', 'laydate'], function(){
+      	form = layui.form,
+        layedit = layui.layedit,
+        laydate = layui.laydate;
+        layer = layui.layer;
+ 	});
+    
 	    function AddMenu(){
 	        var data = {
 	            "button": [
@@ -82,7 +91,7 @@
 	                data: menuData
 	            },
 	            success: function (data) {
-	                alert(data);
+	            	layer.alert(data);
 	            }
 	        });
 	    }
@@ -93,7 +102,7 @@
 	            url: "/weixin/GetMenu",
 	            data: {},
 	            success: function (data) {
-	                alert(data);
+	            	layer.alert(data);
 	            }
 	        });
 	    }
@@ -104,7 +113,7 @@
 	            url: "/weixin/DeleteMenu",
 	            data: {},
 	            success: function (data) {
-	                alert(data);
+	            	layer.alert(data);
 	            }
 	        });
 	    }

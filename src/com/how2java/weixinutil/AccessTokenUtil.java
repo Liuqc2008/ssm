@@ -33,9 +33,7 @@ public class AccessTokenUtil {
 		
 		String accessToken = GetAccessToken(appID, appSecret);
 		
-		JSONObject jsonObject = JSONObject.parseObject(accessToken);
-		
-		session.setAttribute(SessionAccessToken, jsonObject.getString("access_token"));
+		session.setAttribute(SessionAccessToken, accessToken);
 		session.setMaxInactiveInterval(7200);
 		
         return session.getAttribute(SessionAccessToken).toString();
@@ -49,8 +47,9 @@ public class AccessTokenUtil {
 	public static String GetAccessToken(String appID, String appSecret){
 		String url = "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=APPID&secret=APPSECRET";// 全局accesstoken接口
 		url = url.replace("APPID", appID).replace("APPSECRET", appSecret);
-		String jsonObject = WebUtil.httpsRequest(url, "GET", null);
+		String accessToken = WebUtil.httpsRequest(url, "GET", null);
 		
-		return jsonObject;
+		JSONObject jsonObject = JSONObject.parseObject(accessToken);
+		return jsonObject.getString("access_token");
 	}
 }

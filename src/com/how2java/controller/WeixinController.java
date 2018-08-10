@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.how2java.util.WebUtil;
+import com.how2java.weixinservcie.JsSDKService;
 import com.how2java.weixinservcie.MenuService;
 import com.how2java.weixinservcie.WeixinOauth2Service;
 import com.how2java.weixinutil.AccessTokenUtil;
@@ -29,6 +30,9 @@ public class WeixinController {
 	
 	@Autowired
 	MenuService menuService;
+	
+	@Autowired
+	JsSDKService jsSDKService;
 	
 	@RequestMapping("login")
 	public ModelAndView listCategory() throws UnsupportedEncodingException{
@@ -88,15 +92,6 @@ public class WeixinController {
 		return mav;
 	}
 	
-	@RequestMapping("jssdk")
-	public ModelAndView jssdk(){
-		ModelAndView mav = new ModelAndView();
-		
-		
-		mav.setViewName("jsp/weixin/jssdk");
-		return mav;
-	}
-	
 	@RequestMapping("menu")
 	public ModelAndView menu(){
 		ModelAndView mav = new ModelAndView();
@@ -127,5 +122,15 @@ public class WeixinController {
 		String result = menuService.DeleteMenu(AppID, AppSecret);
 		
 		return result;
+	}
+	
+	@RequestMapping("jssdk")
+	public ModelAndView jssdk(){
+		ModelAndView mav = new ModelAndView();
+		
+		Map<String, String> map = jsSDKService.GetSign(AppID, AppSecret);
+		mav.addObject("sign", map);
+		mav.setViewName("jsp/weixin/jssdk");
+		return mav;
 	}
 }
