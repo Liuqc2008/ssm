@@ -1,16 +1,15 @@
 package com.how2java.test;
 
-import java.util.List;
+
 import java.util.Map;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.how2java.mapper.CategoryMapper;
-import com.how2java.pojo.Category;
+
 import com.how2java.util.JSONObjectToHashMap;
 import com.how2java.util.WebUtil;
 
@@ -18,8 +17,6 @@ import com.how2java.util.WebUtil;
 @ContextConfiguration("classpath:applicationContext.xml")
 public class MybatisTest {
 
-	@Autowired
-	private CategoryMapper categoryMapper;
 
 	@Test
 	public void testAdd() {
@@ -34,6 +31,7 @@ public class MybatisTest {
 		else{
 			String url = "https://api.weixin.qq.com/sns/userinfo?access_token=" + hashMap.get("access_token") + "&openid=" + hashMap.get("openid") + "&lang=zh_CN";
 			String result = WebUtil.httpsRequest(url, "", "");
+			System.out.println(result);
 		}
 	}
 

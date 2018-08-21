@@ -16,7 +16,7 @@
   	<script type="text/javascript" src="/Resource/Script/layui/layui.js"></script>
 	<link href="/Resource/Script/layui/css/layui.css" rel="stylesheet" type="text/css" />
 	
-	<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+	<script src="http://res.wx.qq.com/open/js/jweixin-1.3.0.js"></script>
 	
 	<script>
 		wx.config({
@@ -92,6 +92,18 @@
 	  			}
   			});
 	  	}	
+	  	
+	  	//小程序内跳转
+	  	function NavigateTo(){
+	  		var params = '?timestamp='+data.jsparams.timeStamp+'&nonceStr='+data.jsparams.nonceStr
+            	+'&'+data.jsparams.pkg+'&signType='+data.jsparams.signType
+           	 	+'&paySign='+data.jsparams.paySign+'&orderId='+data.orderid+'&pType=0';
+	  		
+
+	  		var path = '/page/component/pages/wxpay/wxpay' + params;
+	  		
+	  		wx.miniProgram.navigateTo({url: path});
+	  	}
 	</script>
 </head>
 <body>
@@ -100,6 +112,7 @@
   	<button type="button" onclick="ShareAppMessage()">分享朋友</button>
   	<button type="button" onclick="ChooseImage()">手机照片</button>
   	<button type="button" onclick="ScanQRCode()">扫一扫</button>
+  	<button type="button" onclick="NavigateTo()">跳转小程序</button>
   	<br/>
   	<img src="/Resource/Themes/Image/201808101600.png"/>
 </body>
