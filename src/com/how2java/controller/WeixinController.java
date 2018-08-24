@@ -116,6 +116,7 @@ public class WeixinController {
 		return result;
 	}
 	
+	
 	@RequestMapping(value="DeleteMenu")
 	@ResponseBody
 	public String DeleteMenu() {
