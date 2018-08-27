@@ -15,7 +15,8 @@
  	<context:annotation-config />
 	<context:component-scan base-package="com.how2java.service" />
 	<context:component-scan base-package="com.how2java.weixinservcie" />
-	
+	<context:component-scan base-package="com.how2java.aspect"/>
+	<aop:aspectj-autoproxy/>  
 	
 	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">  
 	  	<property name="driverClassName">  

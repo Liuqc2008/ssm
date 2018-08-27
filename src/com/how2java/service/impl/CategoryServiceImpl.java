@@ -18,4 +18,7 @@ public class CategoryServiceImpl  implements CategoryService{
 		return categoryMapper.list();
 	};
 
+	public Category get(int id){
+		return categoryMapper.get(id);
+	}
 }
