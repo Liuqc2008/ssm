@@ -12,29 +12,25 @@
      http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
      http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 	
-	
-	
-
-   <context:annotation-config />
+ 	<context:annotation-config />
 	<context:component-scan base-package="com.how2java.service" />
 	<context:component-scan base-package="com.how2java.weixinservcie" />
 	
+	
 	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">  
-	  <property name="driverClassName">  
-	      <value>com.mysql.jdbc.Driver</value>  
-	  </property>  
-	  <property name="url">  
-	      <value>jdbc:mysql://localhost:3306/how2java?characterEncoding=UTF-8</value>  
-	
-	  </property>  
-	  <property name="username">  
-	      <value>root</value>  
-	  </property>  
-	  <property name="password">  
-	      <value>123456</value>  
-	  </property>  	
+	  	<property name="driverClassName">  
+	      	<value>com.mysql.jdbc.Driver</value>  
+	  	</property>  
+	  	<property name="url">  
+	      	<value>jdbc:mysql://localhost:3306/how2java?characterEncoding=UTF-8</value>  
+	  	</property>  
+	  	<property name="username">  
+	      	<value>root</value>  
+	  	</property>  
+	  	<property name="password">  
+	      	<value>123456</value>  
+	  	</property>  	
 	</bean>
-	
 	
 	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="typeAliasesPackage" value="com.how2java.pojo" />
@@ -45,7 +41,4 @@
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
 		<property name="basePackage" value="com.how2java.mapper"/>
 	</bean>
-	
-
-
 </beans>
